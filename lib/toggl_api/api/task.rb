@@ -17,8 +17,13 @@ module Toggl
       def get_task(tid)
         get "/tasks/#{tid}"
       end
+      
       alias :task :get_task
 
+      def get_project_tasks(pid)
+        get "/projects/#{pid}/tasks"
+      end
+      
       def update_task(tids, options)
         options = Hashie::Mash.new options
         tids = tids.join(',') if tids.is_a?(Array)
