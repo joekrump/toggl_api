@@ -56,6 +56,7 @@ module Toggl
 
     def handle_response(response)
       raise_errors(response)
+      logger.warn response.inspect
       data = mash(MultiJson.load(response.body))
       (data.is_a?(Hash) && data.key?('data')) ? data['data'] : data
     end
