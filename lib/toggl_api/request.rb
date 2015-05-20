@@ -60,8 +60,10 @@ module Toggl
         data = mash(MultiJson.load(response.body))
         (data.is_a?(Hash) && data.key?('data')) ? data['data'] : data
       rescue MultiJson::ParseError => exception
-        puts exception.data
-        puts exception.cause
+        Rails.logger.error exception.data
+        Rails.logger.error exception.cause
+        Rails.logger.debug exception.data
+        Rails.logger.debug exception.cause
       end
     end
 
