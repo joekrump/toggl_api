@@ -62,6 +62,8 @@ module Toggl
       rescue MultiJson::ParseError => exception
         logger.error exception.data
         logger.error exception.cause
+        logger.debug exception.data
+        logger.debug exception.cause
       end
     end
 
