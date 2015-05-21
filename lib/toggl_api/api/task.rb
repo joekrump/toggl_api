@@ -20,8 +20,9 @@ module Toggl
       
       alias :task :get_task
 
-      def get_project_tasks(pid)
-        get "/projects/#{pid}/tasks"
+      # Valid options for active are: "true", "false" and "both"
+      def get_project_tasks(pid, active)
+        get "/projects/#{pid}/tasks?active=#{active}"
       end
       
       def update_task(tids, options)
